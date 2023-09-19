@@ -15,7 +15,10 @@
     width: 70%;
     height: auto;
     aspect-ratio: 1 / 1;
-    animation: Drop calc(.2s * var(--row)) both;
+
+    &.disc-yellow, &.disc-red {
+      animation: Drop calc(.2s * var(--row)) both;
+    }
   }
 
   .columns {

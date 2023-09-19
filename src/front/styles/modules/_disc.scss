@@ -17,4 +17,8 @@
     border: solid 3px #f63838;
     outline: solid 1px #c01e1e;
   }
+
+  &.disc-active {
+    border: 6px solid var(--green);
+  }
 }

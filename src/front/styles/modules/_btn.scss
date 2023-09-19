@@ -16,6 +16,10 @@
   margin: auto;
   font-weight: bold;
 
+  &:disabled {
+    opacity: .8;
+  }
+
   .icon {
     width: 20px;
     height: 20px;
