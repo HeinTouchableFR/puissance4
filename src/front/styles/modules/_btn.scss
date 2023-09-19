@@ -1,0 +1,68 @@
+@use "src/front/styles/tools/functions";
+
+.btn {
+  --btn-background: var(--color-dark);
+  --btn-color: var(--color-light);
+  color: var(--btn-color);
+  background: var(--btn-background);
+  border: 0;
+  border-radius: 5px;
+  padding: functions.space(1) functions.space(2);
+  transition: 0.4s;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  margin: auto;
+  font-weight: bold;
+
+  .icon {
+    width: 20px;
+    height: 20px;
+    margin-right: functions.space(2);
+  }
+
+  &.primary {
+    --btn-color: var(--color-light);
+    --btn-background: var(--contrast);
+
+
+    &:hover, &:focus {
+      --btn-background: var(--accent);
+    }
+  }
+
+  &.primary-outlined {
+    --btn-color: var(--contrast);
+    --btn-background: var(--contrast);
+    border: solid 2px var(--contrast);
+    background: transparent;
+
+    &:hover, &:focus {
+      --btn-color: var(--color-light);
+      background: var(--btn-background);
+    }
+  }
+
+  &.secondary {
+    --btn-color: var(--color-light);
+    --btn-background: var(--accent);
+
+    &:hover, &:focus {
+      --btn-background: var(--contrast);
+    }
+  }
+
+  &.danger {
+    --btn-color: var(--color-light);
+    --btn-background: var(--red);
+
+    .icon {
+      color: var(--btn-color);
+    }
+
+    &:hover, &:focus {
+      --btn-background: var(--color-dark);
+    }
+  }
+}

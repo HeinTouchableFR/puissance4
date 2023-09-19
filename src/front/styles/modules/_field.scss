@@ -1,0 +1,51 @@
+@use "src/front/styles/tools/functions";
+
+.form-group {
+  position: relative;
+
+  label {
+    display: block;
+    color: var(--color);
+    font-weight: 600;
+
+    small {
+      font-weight: 300;
+      font-size: var(--step--1);
+    }
+  }
+
+  input,
+  textarea,
+  select {
+    border: 1px solid var(--border);
+    background: var(--background-light);
+    border-radius: 0.25em;
+    color: var(--color-dark);
+    padding: calc(1.5 * var(--space, 8px)) calc(1 * var(--space, 8px));
+    display: block;
+    width: 100%;
+    outline: none;
+    min-height: 48px;
+  }
+
+  textarea {
+    min-height: 150px;
+  }
+
+  select {
+    appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='%23121c4299' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/></svg>");
+    background-size: 12px 12px;
+    background-position: center right 20px;
+    background-repeat: no-repeat;
+  }
+
+  input:focus,
+  input:focus + label::before,
+  select:focus,
+  textarea:focus,
+  form button:focus {
+    border-color: var(--contrast);
+    box-shadow: 0 0 0 3px functions.alpha(var(--contrast), 0.25);
+  }
+}

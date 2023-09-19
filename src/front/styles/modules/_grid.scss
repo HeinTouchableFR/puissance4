@@ -1,0 +1,52 @@
+.grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(var(--cols), 1fr);
+  grid-template-rows: repeat(var(--rows), 1fr);
+  aspect-ratio: var(--cols) / var(--rows);
+  background: radial-gradient(circle, transparent, transparent 50%, #336dac 51%, #336dac 60.01%, #2a5782 80%);
+  background-size: calc(100% / var(--cols)) calc(100% / var(--rows));
+  border: 15px solid #2a5782;
+  align-items: center;
+  justify-items: center;
+  margin-top: calc(100% / var(--rows));
+
+  .disc {
+    width: 70%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    animation: Drop calc(.2s * var(--row)) both;
+  }
+
+  .columns {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: flex-end;
+
+    .column {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      width: 100%;
+      height: calc(100% + 100% / var(--rows));
+
+      .disc {
+        opacity: 0;
+        transition: .3s;
+        transform: translateY(0px);
+      }
+
+      &:hover .disc, &:focus .disc {
+        opacity: 1;
+        transform: translateY(40px);
+      }
+    }
+  }
+}
+
+@keyframes Drop {
+  from {
+    transform: translateY(calc(-125% * var(--row)));
+  }
+}

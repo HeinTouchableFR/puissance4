@@ -1,0 +1,22 @@
+@use 'src/front/styles/tools/functions';
+
+.players {
+  display: flex;
+  align-items: center;
+  gap: functions.space(1);
+
+  .player {
+    display: flex;
+    align-items: center;
+    gap: functions.space(1);
+  }
+}
+
+.selector {
+  display: flex;
+  gap: functions.space(1);
+
+  .disc {
+    transform: scale(2);
+  }
+}

@@ -1,0 +1,62 @@
+@use "src/front/styles/tools/functions";
+@use "src/front/styles/tools/mixins";
+@use "src/front/styles/tools/reset";
+@use "src/front/styles/abstracts/fonts";
+
+@use "src/front/styles/modules/field";
+@use "src/front/styles/modules/btn";
+@use "src/front/styles/modules/players";
+@use "src/front/styles/modules/disc";
+@use "src/front/styles/modules/grid";
+
+@use "src/front/styles/abstracts/layout";
+:root {
+  // Font
+  // https://utopia.fyi/type/calculator/?c=320,14,1.2,1100,18,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12
+  --font: "Rubik";
+  /* Step -2: 9.72px → 10.24px */
+  --step--2: clamp(0.61rem, calc(0.60rem + 0.05vw), 0.64rem);
+  /* Step -1: 11.67px → 12.80px */
+  --step--1: clamp(0.73rem, calc(0.71rem + 0.11vw), 0.80rem);
+  /* Step 0: 14.00px → 16.00px */
+  --step-0: clamp(0.88rem, calc(0.84rem + 0.19vw), 1.00rem);
+  /* Step 1: 16.80px → 20.00px */
+  --step-1: clamp(1.05rem, calc(0.99rem + 0.31vw), 1.25rem);
+  /* Step 2: 20.16px → 25.00px */
+  --step-2: clamp(1.26rem, calc(1.17rem + 0.47vw), 1.56rem);
+  /* Step 3: 24.19px → 31.25px */
+  --step-3: clamp(1.51rem, calc(1.37rem + 0.69vw), 1.95rem);
+  /* Step 4: 29.03px → 39.06px */
+  --step-4: clamp(1.81rem, calc(1.62rem + 0.97vw), 2.44rem);
+  /* Step 5: 34.84px → 48.83px */
+  --step-5: clamp(2.18rem, calc(1.91rem + 1.36vw), 3.05rem);
+  // Layout
+  --container-padding: 20px;
+  --container-width: 1350px;
+  --gap: 20px;
+  --space: 8px;
+  // Colors
+  @include mixins.defineColorHSL(--contrast, 197, 37%, 24%);
+  @include mixins.defineColorHSL(--color-dark, 4, 17%, 20%);
+  @include mixins.defineColorHSL(--color, 4, 9%, 67%);
+  @include mixins.defineColorHSL(--color-light, 4, 21%, 94%);
+  @include mixins.defineColorHSL(--accent, 211, 100%, 30%);
+  @include mixins.defineColorHSL(--accent-2, 174, 100%, 50%);
+  --red: #f25353;
+  --green: #41cf7c;
+  --yellow: #feb32b;
+  --white: white;
+  --color-1: #023e8a;
+  --color-2: #e85d04;
+  --color-3: #6a994e;
+  --color-4: #d00000;
+  --color-5: #ffb703;
+  --color-6: #8338ec;
+  --skeleton: var(--color-light);
+  //Other
+  --border: var(--color);
+  --border-light: functions.lightness(var(--border), 1.2);
+  --background: var(--color-light);
+  --background-light: #fff;
+  --shadow: #d8e1e8;
+}

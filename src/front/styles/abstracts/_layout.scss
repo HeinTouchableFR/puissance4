@@ -1,0 +1,166 @@
+@use "src/front/styles/tools/functions";
+@use "src/front/styles/tools/mixins";
+@use "sass:string";
+
+// Padding and Margin
+// ==================
+$sizes: (
+    "size-0": functions.space(0),
+    "size-1": functions.space(1),
+    "size-2": functions.space(2),
+    "size-3": functions.space(3),
+    "size-4": functions.space(4),
+    "size-5": functions.space(5),
+    "size-6": functions.space(6),
+);
+
+$sides: top, left, bottom, right, inline, inline-start, inline-end, block, block-start, block-end;
+
+@each $size-number, $size-value in $sizes {
+    $number: string.slice($size-number, 6);
+
+    .p {
+        &-#{$number} {
+            padding: $size-value;
+        }
+
+        @each $side in $sides {
+            &-#{$side}-#{$number} {
+                padding-#{$side}: $size-value;
+            }
+        }
+    }
+
+    .m {
+        &-#{$number} {
+            margin: $size-value;
+        }
+
+        @each $side in $sides {
+            &-#{$side}-#{$number} {
+                margin-#{$side}: $size-value;
+            }
+        }
+    }
+}
+
+.m-auto {
+    margin: auto;
+}
+
+.relative {
+    position: relative;
+}
+
+.absolute {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+
+.page-wrapper {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    overflow: hidden;
+}
+
+// Container
+// ==============
+%container,
+.container {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: var(--container-width);
+    padding-left: var(--container-padding);
+    padding-right: var(--container-padding);
+    margin: auto;
+}
+
+.bloc {
+    background-color: var(--backgroundColor);
+    background-image: var(--backgroundDesktop);
+    background-position: var(--backgroundXPosition, center) var(--backgroundYPosition, center);
+    background-repeat: var(--backgroundRepeat, no-repeat);
+    background-size: var(--backgroundSize, cover);
+    color: var(--textColor, currentColor);
+}
+
+@include mixins.down(1000) {
+    .bloc {
+        background-image: var(--backgroundMobile);
+    }
+}
+
+// Horizontal
+// ==================
+.flex {
+    display: flex !important;
+    align-items: center;
+}
+
+.stretch {
+    align-items: stretch;
+}
+
+
+// Stacks
+// ==================
+%stack,
+.stack,
+.stack-large,
+.stack-separated {
+    --gap: 2;
+    display: grid !important;
+    grid-template-columns: 1fr;
+    align-content: flex-start;
+    grid-gap: calc(var(--gap) * var(--space));
+
+    & > * {
+        min-width: 0;
+    }
+}
+
+.stack-large {
+    --gap: 4;
+}
+
+.stack-separated {
+    --gap: 3;
+    --gap-separated: var(--gap);
+    grid-gap: calc(var(--gap) * var(--space) * 2);
+}
+
+.stack-separated > * + * {
+    position: relative;
+}
+
+.stack-separated > * + *::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 1px;
+    width: 100%;
+    background: var(--border-light);
+    top: calc(var(--gap-separated) * var(--space) * -1);
+}
+
+.nowrap {
+    flex-wrap: nowrap;
+}
+
+.mobile-hidden {
+    @include mixins.down(700) {
+        display: none;
+    }
+}
+
+.reader-only {
+    display: none;
+}

@@ -1,0 +1,88 @@
+// Font face
+// ==================
+@font-face {
+    font-family: "Rubik";
+    src: url("../assets/fonts/Rubik-VariableFont_wght.ttf") format("truetype-variations");
+    font-weight: 1 999;
+    font-display: swap;
+}
+
+// Font Weight
+// ==================
+%h1,
+.h1 {
+    font-family: var(--font);
+    font-weight: 700;
+    font-style: normal;
+    font-size: var(--step-3);
+    line-height: 1.2;
+    color: var(--contrast);
+}
+
+%h2,
+.h2 {
+    font-weight: 700;
+    font-style: normal;
+    font-size: var(--step-2);
+    line-height: 1.2;
+    color: var(--contrast);
+}
+
+%h3,
+.h3 {
+    font-style: normal;
+    font-weight: 700;
+    font-size: var(--step-1);
+    line-height: 1.3;
+    color: var(--contrast);
+}
+
+%h4,
+.h4 {
+    font-family: var(--font);
+    font-size: var(--step-0);
+    font-weight: bold;
+    color: var(--contrast);
+}
+
+%h5,
+.h5 {
+    font-size: var(--step--1);
+    font-family: var(--font);
+    font-weight: bold;
+    color: var(--contrast);
+}
+
+// Alignements
+// ==================
+.text-left {
+    text-align: left !important;
+}
+
+.text-right {
+    text-align: right !important;
+}
+
+.text-center {
+    text-align: center !important;
+}
+
+.text-justify {
+    text-align: justify !important;
+}
+
+.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+// Font Weight
+// ==================
+.normal {
+    font-weight: normal;
+}
+
+.bold {
+    font-weight: bold;
+}
