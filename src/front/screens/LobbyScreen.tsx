@@ -17,9 +17,6 @@ export function LobbyScreen({}: LobbyScreenProps) {
     const canStart = can({type: 'start'})
 
     return <div>
-        <NameSelector
-            onSelect={joinGame}
-        />
         <ColorSelector
             onSelect={chooseColor}
             players={context.players}

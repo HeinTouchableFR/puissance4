@@ -20,6 +20,12 @@ export type Player = {
     color?: PlayerColor
 }
 
+export type PlayerSession = {
+    id: string,
+    name: string,
+    signature: string,
+}
+
 export type Position = {
     x: number,
     y: number
