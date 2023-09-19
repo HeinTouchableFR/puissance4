@@ -1,6 +1,7 @@
 import Fastify from 'fastify'
 import FastifyStatic from '@fastify/static'
 import FastifyWebsocket from '@fastify/websocket'
+import FastifyView from '@fastify/view'
 import {v4} from 'uuid'
 import {sign, verify} from "./functions/crypto";
 import {resolve} from 'path';
@@ -9,14 +10,31 @@ import {ConnectionRepository} from "../../src/server/repositories/ConnectionRepo
 import {GameRepository} from "../../src/server/repositories/GameRepository";
 import {GameModel} from "../../src/machine/GameMachine";
 import {publishMachine} from "../../src/server/functions/socket";
+import {readFileSync} from "node:fs";
+import ejs from 'ejs'
 
 
 const connections = new ConnectionRepository()
 const games = new GameRepository(connections)
+const env = process.env.NODE_ENV as 'dev' | 'prod'
+
+let manifest = {}
+
+try {
+    const manifestData = readFileSync('./public/assets/manifest.json')
+    manifest = JSON.parse(manifestData.toLocaleString())
+} catch (err) {
+    console.log(err)
+}
 
 const fastify = Fastify({logger: true})
 fastify.register(FastifyStatic, {
     root: resolve('./public')
+})
+fastify.register(FastifyView, {
+   engine: {
+       ejs: ejs
+   }
 })
 fastify.register(FastifyWebsocket)
 
@@ -46,7 +64,6 @@ fastify.register(async (f) => {
         const game = games.find(gameId) ?? games.create(gameId)
         connections.persist(playerId, gameId, connection)
         game.send(GameModel.events.join(playerId, playerName))
-        console.log(connections, games)
 
         publishMachine(game.state, connection)
 
@@ -65,6 +82,10 @@ fastify.register(async (f) => {
     })
 })
 
+fastify.get('/', (_, res) => {
+    res.view('/templates/index.ejs', {manifest, env})
+})
+
 fastify.post('/api/players', (_, res) => {
     const playerId = v4()
     res.send({
@@ -73,7 +94,7 @@ fastify.post('/api/players', (_, res) => {
     })
 })
 
-fastify.listen({port: 8000}).catch((err) => {
+fastify.listen().catch((err) => {
     fastify.log.error(err)
     process.exit(1)
 }).then(() => {

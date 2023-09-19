@@ -37,7 +37,6 @@ export function GameContextProvider({children}: PropsWithChildren) {
 
     const sendCb = useCallback<GameContextType['send']>((event) => {
         const eventWithPlayer = {playerId, ...event}
-        console.log(eventWithPlayer)
         socket?.send(JSON.stringify({type: 'gameUpdate', event: eventWithPlayer}))
     }, [playerId])
 

@@ -1,5 +1,3 @@
-import {prevent} from "../../functions/dom";
-
 type DrawProps = {
     onRestart: () => void
 
