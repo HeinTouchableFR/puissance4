@@ -1,4 +1,4 @@
-import {GameGuard, PlayerColor} from "../types.ts"
+import {GameGuard, PlayerColor} from "../types"
 import {countEmptyCells, currentPlayer, freePositionY, winingPositions} from "../functions/game";
 
 

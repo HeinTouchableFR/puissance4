@@ -1,4 +1,4 @@
-import {GameContext, GridState, Player, PlayerColor} from "../types.ts";
+import {GameContext, GridState, Player, PlayerColor} from "../types";
 
 export function freePositionY(grid: GridState, x: number) {
     for (let y = grid.length - 1; y >= 0; y--) {
