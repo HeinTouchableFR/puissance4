@@ -10,7 +10,7 @@ export function Draw({onRestart}: DrawProps) {
         <h2 className="h2 flex">
             Égalité bande de nuls
         </h2>
-        <button onClick={() => prevent(onRestart)} className="btn primary-outlined">
+        <button onClick={() => onRestart()} className="btn primary-outlined">
             Rejouer
         </button>
     </div>

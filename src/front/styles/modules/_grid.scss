@@ -34,6 +34,11 @@
       width: 100%;
       height: calc(100% + 100% / var(--rows));
 
+      &:disabled {
+        opacity: 0;
+        pointer-events: none;
+      }
+
       .disc {
         opacity: 0;
         transition: .3s;
@@ -50,6 +55,6 @@
 
 @keyframes Drop {
   from {
-    transform: translateY(calc(-125% * var(--row)));
+    transform: translateY(calc(-125% * (var(--row) + 1)));
   }
 }

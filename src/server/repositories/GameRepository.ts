@@ -28,8 +28,8 @@ export class GameRepository {
     }
 
     clean(id: string) {
-        const game = this.find(id)
-        if (game && game.state.context.players.filter(p => this.connections.has(p.id, id)).length > 0) {
+        const game = this.games.get(id)
+        if (game && game.state.context.players.filter(p => this.connections.has(p.id, id)).length === 0) {
             this.games.delete(id)
         }
     }

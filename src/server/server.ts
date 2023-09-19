@@ -46,6 +46,7 @@ fastify.register(async (f) => {
         const game = games.find(gameId) ?? games.create(gameId)
         connections.persist(playerId, gameId, connection)
         game.send(GameModel.events.join(playerId, playerName))
+        console.log(connections, games)
 
         publishMachine(game.state, connection)
 

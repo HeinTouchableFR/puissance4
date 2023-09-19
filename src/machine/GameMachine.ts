@@ -47,12 +47,6 @@ export const GameMachine = GameModel.createMachine({
     initial: GameStates.LOBBY,
     states: {
         [GameStates.LOBBY]: {
-            after: {
-                20000: {
-                    actions: [GameModel.assign(switchPlayerAction)],
-                    target: GameStates.PLAY,
-                }
-            },
             on: {
                 join: {
                     cond: canJoinGuard,
